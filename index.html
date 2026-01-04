@@ -85,9 +85,8 @@
 
             if (response.ok) {
                 setTimeout(() => {
-                    status.innerText = "❌ 解析エラー: サーバーとの通信に失敗しました (Code: 404)";
+                    status.innerText = "❌ 解析エラー: もう一度お試しください。";
                     status.style.color = "#ff4b2b";
-                    alert("解析中にエラーが発生しました。もう一度お試しください。");
                     btn.disabled = false;
                 }, 1500);
             } else {
