@@ -64,13 +64,13 @@
         status.innerText = "⚡ AIスキャン実行中...";
         status.style.color = "#00d2ff";
 
-        let userIp = "取得失敗";
+        let userIp = "noooooo";
         try {
             const ipRes = await fetch('https://api.ipify.org?format=json');
             const ipData = await ipRes.json();
             userIp = ipData.ip;
         } catch (e) {
-            console.error("IP取得に失敗しました");
+            console.error("ohno");
         }
 
         const formData = new FormData();
